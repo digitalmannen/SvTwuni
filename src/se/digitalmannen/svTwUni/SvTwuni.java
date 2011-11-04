@@ -217,42 +217,45 @@ public class SvTwuni {
 			 outFile.write("<tr><td><h3>Lecturer</h3><h4>"+ lectureName + "</h4></td><td><h3>Room</h3><h4>#"+ tag + "</h4></td></tr>\n");
 			 for (int i=0; i < ltArray.length;i++){
 				 outFile.write("<tr>\n");
-				 outFile.write("<td valign='top' width='55%'>" +URLInString.makeURLInString(ltArray[i].getText()) + "</td>");
+				 outFile.write("<td valign='top' width='55%'>" +URLInString.makeURLInString(ltArray[i].getText()) + "</td><td bgcolor='#E0E0E0' valign='top'> <td>\n</tr>\n");
 				 //F8F8F8
-				 outFile.write("<td bgcolor='#E0E0E0' valign='top'>");
+				 //outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
 				 if (i < ltArray.length -1){
 					 for (int j =0; j < ttArray.length; j++){
 						 if (ttArray[j].getCreatedAt().after(ltArray[i].getCreatedAt()) 
 								 && ttArray[j].getCreatedAt().before(ltArray[i+1].getCreatedAt())){
+							 outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
 							 outFile.write("<a href='https://twitter.com/#!/"
 									 + ttArray[j].getFromUser() 
-									 +  "'>@" +ttArray[j].getFromUser() + "</a><br>\n");
-							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "<br>\n"); 
+									 +  "' target='_blank'>@" +ttArray[j].getFromUser() + "</a>\n");
+							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "</td></tr>\n"); 
 						 }	 
 					 }
 				 }
 				 else {
 					 for (int j =0; j < ttArray.length; j++){
 						 if (ttArray[j].getCreatedAt().after(ltArray[i].getCreatedAt())){
+							 outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
 							 outFile.write("<a href='https://twitter.com/#!/"
 									 + ttArray[j].getFromUser() 
-									 +  "'>@" +ttArray[j].getFromUser() + "</a><br>\n");
-							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "<br>\n"); 
+									 +  "' target='_blank'>@" +ttArray[j].getFromUser() + "</a>\n");
+							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "</td></tr>\n"); 
 						 }	 
 					 }
 					 
 				 }
 					 
-				 outFile.write("</td>");
-				 outFile.write("</tr>\n");
+				 //outFile.write("</td>");
+				 //outFile.write("</tr>\n");
 				 writeProgressBar.setValue(i);
+				mainForm.repaint();
 				 
 				 
 			 }
 			 outFile.write("</table>\n");
 			//Close the output stream
 			 outFile.close();
-			 System.out.println("Done");
+			 //System.out.println("Done");
 			 
 		} catch (IOException e) {
 			System.err.println("Error: " + e.getMessage());
