@@ -1,3 +1,9 @@
+/**
+ * @author martin
+ * @version 1.01
+ */
+
+
 package se.digitalmannen.svTwUni;
 
 import java.awt.EventQueue;
@@ -92,7 +98,7 @@ public class SvTwuni {
 	 */
 	private void initialize() {
 		mainForm = new JFrame();
-		mainForm.setTitle("Svenska Twitteruniversitetet");
+		mainForm.setTitle("Svenska Twitteruniversitetet v 1.01");
 		mainForm.setBounds(100, 100, 424, 212);
 		mainForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainForm.getContentPane().setLayout(null);
