@@ -201,82 +201,7 @@ public class SvTwuni {
 		mainForm.getContentPane().add(writeProgressBar);
 	}
 
-//	private void writeTable(){
-//		GetLectureTweets lt = new GetLectureTweets();
-//		GetTagTweet tt = new GetTagTweet();
-//		//lTweets =  lt.getTweetArray("dmutv", "2011-11-01", "22:59:00", "2011-11-01", "23:01:00");
-//		//tTweets = tt.getTweetArray("tsttwsv", "2011-11-01", "22:59:00", "2011-11-01", "23:01:00");
-//		//FetchLectureProssesLabel.setText("Working...");
-//		lTweets =  lt.getTweetArray(svTwUni,lectureStartDate,lectureStartTime,lectureEndDate,lectureEndTime);
-//		//FetchLectureProssesLabel.setText("Done");
-//		//FetchtagProsseslabel.setText("Working...");
-//		tTweets = tt.getTweetArray(tag,tagStartDate,tagStartTime,tagEndDate,tagEndTime);
-//		//FetchtagProsseslabel.setText("Done");
-//		 Tweet[] ltArray = new Tweet[lTweets.size()];
-//		 lTweets.toArray(ltArray);
-//		 
-//		 Tweet[] ttArray = new Tweet[tTweets.size()];
-//		 tTweets.toArray(ttArray);
-//		 
-//		 //Progressbaeren
-//		 writeProgressBar.setMaximum(ltArray.length-1);
-//		 writeProgressBar.setIndeterminate(true);
-//		 //start the writing
-//		try {
-//			// Create file 
-//			  FileWriter fstream = new FileWriter(tag+".txt");
-//			  BufferedWriter outFile = new BufferedWriter(fstream);
-//			 
-//			  outFile.write("<table border=1>\n");
-//			 outFile.write("<tr><td><h3>Lecturer</h3><h4>"+ lectureName + "</h4></td><td><h3>Room</h3><h4>#"+ tag + "</h4></td></tr>\n");
-//			 for (int i=0; i < ltArray.length;i++){
-//				 outFile.write("<tr>\n");
-//				 outFile.write("<td valign='top' width='55%'>" +URLInString.makeURLInString(ltArray[i].getText()) + "</td><td bgcolor='#E0E0E0' valign='top'> <td>\n</tr>\n");
-//				 //F8F8F8
-//				 //outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
-//				 if (i < ltArray.length -1){
-//					 for (int j =0; j < ttArray.length; j++){
-//						 if (ttArray[j].getCreatedAt().after(ltArray[i].getCreatedAt()) 
-//								 && ttArray[j].getCreatedAt().before(ltArray[i+1].getCreatedAt())){
-//							 outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
-//							 outFile.write("<a href='https://twitter.com/#!/"
-//									 + ttArray[j].getFromUser() 
-//									 +  "' target='_blank'>@" +ttArray[j].getFromUser() + "</a>\n");
-//							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "</td></tr>\n"); 
-//						 }	 
-//					 }
-//				 }
-//				 else {
-//					 for (int j =0; j < ttArray.length; j++){
-//						 if (ttArray[j].getCreatedAt().after(ltArray[i].getCreatedAt())){
-//							 outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
-//							 outFile.write("<a href='https://twitter.com/#!/"
-//									 + ttArray[j].getFromUser() 
-//									 +  "' target='_blank'>@" +ttArray[j].getFromUser() + "</a>\n");
-//							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "</td></tr>\n"); 
-//						 }	 
-//					 }
-//					 
-//				 }
-//					 
-//				 //outFile.write("</td>");
-//				 //outFile.write("</tr>\n");
-//				 writeProgressBar.setValue(i);
-//				 writeProgressBar.repaint();
-//				
-//				 
-//				 
-//			 }
-//			 outFile.write("</table>\n");
-//			//Close the output stream
-//			 outFile.close();
-//			 //System.out.println("Done");
-//			 writeProgressBar.setIndeterminate(false);
-//			 
-//		} catch (IOException e) {
-//			System.err.println("Error: " + e.getMessage());
-//		}
-//	}
+
 	
 	private void getAllTextFields(){
 		tag = removeChar(tagTextField.getText(), '#');
@@ -365,44 +290,6 @@ public class SvTwuni {
 	    return r;
 	}
 	
-	/**
-	    * Use a JFileChooser in Save mode to select files
-	    * to open. Use a filter for FileFilter subclass to select
-	    * for "*.txt" files. If a file is selected.
-	   **/
-//	   void saveFile () {
-//	     File file = null;
-//	     JFileChooser fc = new JFileChooser ();
-//
-//	     // Start in current directory
-//	     fc.setCurrentDirectory (new File ("."));
-//
-//	     // Set filter for Java source files.
-//	     fc.setFileFilter (fJavaFilter);
-//
-//	     // Set to a default name for save.
-//	     fc.setSelectedFile (fFile);
-//
-//	     // Open chooser dialog
-//	     int result = fc.showSaveDialog (this);
-//	     
-//
-//	     if (result == JFileChooser.CANCEL_OPTION) {
-//	         //return true;
-//	     } else if (result == JFileChooser.APPROVE_OPTION) {
-//	         fFile = fc.getSelectedFile ();
-//	         if (fFile.exists ()) {
-//	             int response = JOptionPane.showConfirmDialog (null,
-//	               "Overwrite existing file?","Confirm Overwrite",
-//	                JOptionPane.OK_CANCEL_OPTION,
-//	                JOptionPane.QUESTION_MESSAGE);
-//	             if (response == JOptionPane.CANCEL_OPTION) return false;
-//	         }
-//	         //return writeFile (fFile, fTextArea.getText ());
-//	     } else {
-//	       //return false;
-//	     }
-//	  } // saveFile
 	
 }
 
