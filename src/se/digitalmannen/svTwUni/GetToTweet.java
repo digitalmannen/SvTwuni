@@ -1,6 +1,5 @@
 package se.digitalmannen.svTwUni;
 
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,8 +10,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-import javax.swing.JProgressBar;
-
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Tweet;
@@ -20,11 +17,10 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
-public class GetTagTweet {
-
+public class GetToTweet {
 	//private Tweet[] tweetArray;
 	private List<Tweet> allTweets = new ArrayList<Tweet>();
-	public GetTagTweet(){
+	public GetToTweet(){
 		
 	}
 	
@@ -36,7 +32,7 @@ public class GetTagTweet {
 	 * @param eTime - end Time
 	 * @return - list of the tweets
 	 */
-	public List<Tweet> getTweetArray(String tag, String sDate, String sTime, String eDate, String eTime){
+	public List<Tweet> getTweetArray(String user, String sDate, String sTime, String eDate, String eTime){
 		int page =1;
 		int i=1;
 		Twitter twitter = new TwitterFactory().getInstance();
@@ -78,7 +74,7 @@ public class GetTagTweet {
 		
 		//start the query
 		//Query query = new Query("#" + tag +" since:" + sDate + " until:" + teDate);
-		Query query = new Query("#" + tag + " since:" + sDate);// + " until:" + teDate);
+		Query query = new Query("to:" + user  + " since:" + sDate);// + " until:" + teDate);
 
 	    try {
 	    	while(page !=-1 && page < 16) {

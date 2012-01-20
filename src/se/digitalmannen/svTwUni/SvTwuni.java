@@ -1,6 +1,6 @@
 /**
  * @author martin
- * @version 1.01
+ * @version 1.02
  */
 
 
@@ -98,7 +98,7 @@ public class SvTwuni {
 	 */
 	private void initialize() {
 		mainForm = new JFrame();
-		mainForm.setTitle("Svenska Twitteruniversitetet v 1.01");
+		mainForm.setTitle("Svenska Twitteruniversitetet v 1.02");
 		mainForm.setBounds(100, 100, 424, 212);
 		mainForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainForm.getContentPane().setLayout(null);
@@ -179,8 +179,9 @@ public class SvTwuni {
 					//TODO make to threads
 					GetLectureTweets lt = new GetLectureTweets();
 					GetTagTweet tt = new GetTagTweet();
+					GetToTweet totw = new GetToTweet();
 					WriteTable wt = new WriteTable();
-					wt.writeTableToFile(lt,tt,tag,tagStartDate,
+					wt.writeTableToFile(lt,tt,totw,tag,tagStartDate,
 							tagStartTime,tagEndDate,tagEndTime,
 							svTwUni,lectureStartDate,lectureStartTime,
 							lectureEndDate,lectureEndTime, lectureName);
@@ -209,7 +210,6 @@ public class SvTwuni {
 		tagStartTime = startTimeTextField.getText();
 		tagEndDate = endDateTextField.getText(); 
 		tagEndTime = endTimeTextField.getText();
-		//svTwUni = "dmutv";
 		lectureName = lecturerTextField.getText();
 		lectureStartDate = tagStartDate;
 		lectureStartTime = tagStartTime;
@@ -220,14 +220,6 @@ public class SvTwuni {
 	
 	private boolean verfiyeTextField(){
 		boolean r = true;
-//		if ( tagEndDate.isEmpty() || tagEndTime.isEmpty()  ){
-//			JOptionPane.showMessageDialog(mainForm,
-//				    "Fields text missing ",
-//				    "Inane error",
-//				    JOptionPane.ERROR_MESSAGE);
-//			return false;
-//		}
-		
 		if (lectureName.isEmpty()){
 			JOptionPane.showMessageDialog(mainForm,
 				    "Lecture text is empty",
@@ -266,7 +258,7 @@ public class SvTwuni {
 		}
 		else if (tagEndDate.isEmpty()){
 			JOptionPane.showMessageDialog(mainForm,
-				    "end date is missing",
+				    "End date is missing",
 				    "Error",
 				    JOptionPane.ERROR_MESSAGE);
 			return false;

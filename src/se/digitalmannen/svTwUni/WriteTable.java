@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.TimeZone;
 
 import twitter4j.Tweet;
@@ -14,9 +16,11 @@ import twitter4j.Tweet;
 public class WriteTable {
 	private List<Tweet> lTweets = new ArrayList<Tweet>();
 	private List<Tweet> tTweets = new ArrayList<Tweet>();
+	private List<Tweet> toTweets = new ArrayList<Tweet>();
+	private List<Tweet> mergeTweets = new ArrayList<Tweet>();
 
 	
-	public void writeTableToFile(GetLectureTweets lt, GetTagTweet tt, String tag, String tagStartDate, String tagStartTime, String tagEndDate, String tagEndTime, String svTwUni, String lectureStartDate, String lectureStartTime, String lectureEndDate, String lectureEndTime, String lectureName){
+	public void writeTableToFile(GetLectureTweets lt, GetTagTweet tt, GetToTweet totw, String tag, String tagStartDate, String tagStartTime, String tagEndDate, String tagEndTime, String svTwUni, String lectureStartDate, String lectureStartTime, String lectureEndDate, String lectureEndTime, String lectureName){
 		
 	
 		
@@ -29,11 +33,23 @@ public class WriteTable {
 		//FetchtagProsseslabel.setText("Working...");
 		tTweets = tt.getTweetArray(tag,tagStartDate,tagStartTime,tagEndDate,tagEndTime);
 		//FetchtagProsseslabel.setText("Done");
+		toTweets = totw.getTweetArray(svTwUni,tagStartDate,tagStartTime,tagEndDate,tagEndTime);
+		//FetchtagProsseslabel.setText("Done");
+		
+		 /*
+		  * Ta alla tweets från tt och totw slå ihop till en lista (tabort ev dubletter) och använd den listan 
+		  */
+		 
+		 mergeToAndTag();
+		 
 		 Tweet[] ltArray = new Tweet[lTweets.size()];
 		 lTweets.toArray(ltArray);
 		 
-		 Tweet[] ttArray = new Tweet[tTweets.size()];
-		 tTweets.toArray(ttArray);
+		 //Tweet[] ttArray = new Tweet[tTweets.size()];
+		 //tTweets.toArray(ttArray);
+		 
+		 Tweet[] ttArray = new Tweet[mergeTweets.size()];
+		 mergeTweets.toArray(ttArray);
 		 
 		 
 		 //Progressbaeren
@@ -84,9 +100,7 @@ public class WriteTable {
 				 //outFile.write("</tr>\n");
 				// writeProgressBar.setValue(i);
 				// writeProgressBar.repaint();
-				
-				 
-				 
+	 
 			 }
 			 outFile.write("</table>\n");
 			//Close the output stream
@@ -98,20 +112,21 @@ public class WriteTable {
 			System.err.println("Error: " + e.getMessage());
 		}
 	}
+	
+	private void mergeToAndTag() {
+		mergeTweets.addAll(tTweets);
+		//mergeTweets.addAll(toTweets);
+		
+		Set setboth = new HashSet(mergeTweets);
+		setboth.addAll(toTweets);
+		mergeTweets.clear();
+		mergeTweets.addAll(setboth);
 
-
+	}
+	
 	private String tweetDate(Tweet tweet) {
-		// TODO Auto-generated method stub
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		//dfm.setTimeZone(TimeZone.getTimeZone("Europe/Zurich"));
 		dfm.setTimeZone(TimeZone.getTimeZone("GMT"));
 		return "<span style=\"font-size:x-small;\">" + dfm.format(tweet.getCreatedAt()) + "</span><br />";
-		//return null;
 	}
-
-
-	
-	
-	
-	
 }
