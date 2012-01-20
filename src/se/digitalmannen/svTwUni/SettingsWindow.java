@@ -73,8 +73,8 @@ public class SettingsWindow extends JDialog {
             }
 
         	else {
-                prop.setProperty("oauth.consumerKey", "75Jgz1p4GmOqlVG9KwfVQ");
-                prop.setProperty("oauth.consumerSecret", "mFLWaoy5d4I7yzPwXbLL57iBHv9ELIy2qplf5QG49U");
+                prop.setProperty("oauth.consumerKey", "consumerKey");
+                prop.setProperty("oauth.consumerSecret", "consumerSecret");
                 os = new FileOutputStream("twitter4j.properties");
                 prop.store(os, "twitter4j.properties");
             }
