@@ -1,6 +1,6 @@
 /**
  * @author martin
- * @version 1.02
+ * @version 1.03
  */
 
 
@@ -98,7 +98,7 @@ public class SvTwuni {
 	 */
 	private void initialize() {
 		mainForm = new JFrame();
-		mainForm.setTitle("Svenska Twitteruniversitetet v 1.02");
+		mainForm.setTitle("Svenska Twitteruniversitetet v 1.03");
 		mainForm.setBounds(100, 100, 424, 212);
 		mainForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainForm.getContentPane().setLayout(null);
