@@ -11,47 +11,47 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 
-import twitter4j.Tweet;
+//import twitter4j.Tweet;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.BufferedWriter;
+//import java.io.File;
+//import java.io.FileWriter;
+//import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+//import java.util.List;
 
-import javax.swing.JFileChooser;
+//import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
-import javax.swing.JCheckBox;
+//import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 
 public class SvTwuni {
 
 	private JFrame mainForm;
-	private List<Tweet> lTweets = new ArrayList<Tweet>();
-	private List<Tweet> tTweets = new ArrayList<Tweet>();
+	//private List<Tweet> lTweets = new ArrayList<Tweet>();
+	//private List<Tweet> tTweets = new ArrayList<Tweet>();
 	
 	private JTextField lecturerTextField;
 	private JTextField tagTextField; 
 	private JFormattedTextField startDateTextField;
 	private JFormattedTextField startTimeTextField;
-	private JCheckBox chckbxUseStartTime;
+	//private JCheckBox chckbxUseStartTime;
 	private JFormattedTextField endDateTextField;
 	private JFormattedTextField endTimeTextField;
 	private JProgressBar writeProgressBar = new JProgressBar();
 	
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private DateFormat timeFormat = new SimpleDateFormat("HH:mm");
-	private Date nowDate = new Date();
+	//private Date nowDate = new Date();
 	
 	private String lectureName;
 	private String tag;
@@ -103,12 +103,12 @@ public class SvTwuni {
 		mainForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainForm.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Lecturer");
+		JLabel lblNewLabel = new JLabel("Tweeter");
 		lblNewLabel.setBounds(12, 12, 70, 15);
 		mainForm.getContentPane().add(lblNewLabel);
 		
 		lecturerTextField = new JTextField();
-		lecturerTextField.setToolTipText("<html>the name of teh Lecturer</html>");
+		lecturerTextField.setToolTipText("<html>the name of the Tweeter</html>");
 		lblNewLabel.setLabelFor(lecturerTextField);
 		lecturerTextField.setBounds(12, 28, 114, 19);
 		mainForm.getContentPane().add(lecturerTextField);

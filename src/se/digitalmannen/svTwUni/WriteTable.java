@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.TimeZone;
 
@@ -62,11 +63,11 @@ public class WriteTable {
 			  BufferedWriter outFile = new BufferedWriter(fstream);
 			 
 			  outFile.write("<table border=1>\n");
-			 outFile.write("<tr><td><h3>Lecturer</h3><h4>"+ lectureName + "</h4></td><td><h3>Room</h3><h4>#"+ tag + "</h4></td></tr>\n");
+			 outFile.write("<tr><td><h3>Tweeter</h3><h4>"+ lectureName + "</h4></td><td><h3>Room</h3><h4>#"+ tag + "</h4></td></tr>\n");
 			 for (int i=0; i < ltArray.length;i++){
 				 outFile.write("<tr>\n");
 				 //outFile.write("<td valign='top' width='55%'>" + "<span style=\"font-size:x-small;\">" + ltArray[i].getCreatedAt() + "</span><br />" + URLInString.makeURLInString(ltArray[i].getText()) + "</td><td bgcolor='#E0E0E0' valign='top'> <td>\n</tr>\n");
-				 outFile.write("<td valign='top' width='55%'>" + tweetDate(ltArray[i]) + URLInString.makeURLInString(ltArray[i].getText()) + "</td><td bgcolor='#E0E0E0' valign='top'> <td>\n</tr>\n");
+				 outFile.write("<td valign='top' width='55%'>" + URLInString.makeURLInString(ltArray[i].getText()) + "<br />"  + tweetDate(ltArray[i]) + "</td><td bgcolor='#E0E0E0' valign='top'> <td>\n</tr>\n");
 				 //F8F8F8
 				 //outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
 				 if (i < ltArray.length -1){
@@ -75,10 +76,10 @@ public class WriteTable {
 								 && ttArray[j].getCreatedAt().before(ltArray[i+1].getCreatedAt())){
 							 outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
 							 //outFile.write("<span style=\"font-size:x-small;\">" + ttArray[j].getCreatedAt() + "</span><br />" + "<a href='https://twitter.com/#!/"
-							 outFile.write(tweetDate(ttArray[j]) + "<a href='https://twitter.com/#!/"
+							 outFile.write("<a href='https://twitter.com/#!/"
 									 + ttArray[j].getFromUser() 
 									 +  "' target='_blank'>@" +ttArray[j].getFromUser() + "</a>\n");
-							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "</td></tr>\n"); 
+							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "<br />" + tweetDate(ttArray[j]) + "</td></tr>\n"); 
 						 }	 
 					 }
 				 }
@@ -87,10 +88,10 @@ public class WriteTable {
 						 if (ttArray[j].getCreatedAt().after(ltArray[i].getCreatedAt())){
 							 outFile.write("<tr><td> </td><td bgcolor='#E0E0E0' valign='top'>");
 							 //outFile.write("<span style=\"font-size:x-small;\">" + ttArray[j].getCreatedAt() + "</span><br />" + "<a href='https://twitter.com/#!/"
-							 outFile.write(tweetDate(ttArray[j]) + "<a href='https://twitter.com/#!/"
+							 outFile.write("<a href='https://twitter.com/#!/"
 									 + ttArray[j].getFromUser() 
 									 +  "' target='_blank'>@" +ttArray[j].getFromUser() + "</a>\n");
-							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "</td></tr>\n"); 
+							 outFile.write(URLInString.makeURLInString(ttArray[j].getText()) + "<br />" + tweetDate(ttArray[j]) + "</td></tr>\n"); 
 						 }	 
 					 }
 					 
@@ -113,6 +114,7 @@ public class WriteTable {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void mergeToAndTag() {
 		mergeTweets.addAll(tTweets);
 		//mergeTweets.addAll(toTweets);
@@ -125,8 +127,9 @@ public class WriteTable {
 	}
 	
 	private String tweetDate(Tweet tweet) {
-		DateFormat dfm = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		DateFormat dfm = new SimpleDateFormat("h:mm a", Locale.US);
+
 		dfm.setTimeZone(TimeZone.getTimeZone("GMT"));
-		return "<span style=\"font-size:x-small;\">" + dfm.format(tweet.getCreatedAt()) + "</span><br />";
+		return "<span style=\"font-size:x-small;\">" + dfm.format(tweet.getCreatedAt()) + "</span>";
 	}
 }

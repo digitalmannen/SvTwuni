@@ -34,7 +34,7 @@ public class GetToTweet {
 	 */
 	public List<Tweet> getTweetArray(String user, String sDate, String sTime, String eDate, String eTime){
 		int page =1;
-		int i=1;
+		//int i=1;
 		Twitter twitter = new TwitterFactory().getInstance();
 		//Query query = new Query("#tsttwsv since:2011-11-01");
 		//Query query = new Query("#svpol  since:2011-11-02");
@@ -54,7 +54,7 @@ public class GetToTweet {
 		}
 		cal.setTime(now);  
 		cal.add(Calendar.DAY_OF_YEAR, 1); // <--  
-		Date teDate = cal.getTime();  
+		//Date teDate = cal.getTime();  
 		
 		//Start time
 		Date startTime = new Date();

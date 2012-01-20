@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-import javax.swing.JProgressBar;
+//import javax.swing.JProgressBar;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -38,7 +38,7 @@ public class GetTagTweet {
 	 */
 	public List<Tweet> getTweetArray(String tag, String sDate, String sTime, String eDate, String eTime){
 		int page =1;
-		int i=1;
+		//int i=1;
 		Twitter twitter = new TwitterFactory().getInstance();
 		//Query query = new Query("#tsttwsv since:2011-11-01");
 		//Query query = new Query("#svpol  since:2011-11-02");
@@ -58,7 +58,7 @@ public class GetTagTweet {
 		}
 		cal.setTime(now);  
 		cal.add(Calendar.DAY_OF_YEAR, 1); // <--  
-		Date teDate = cal.getTime();  
+		//Date teDate = cal.getTime();  
 		
 		//Start time
 		Date startTime = new Date();
